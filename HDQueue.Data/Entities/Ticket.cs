@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,10 @@ namespace HDQueue.Data.Entities
     public class Ticket
 
     {
-
+        [Key]
         public int Id { get; set; }
+
+        public string UserId { get; set; }
 
         [Required(ErrorMessage ="Titulo es requerido")]
         public string Titulo { get; set; }
@@ -21,14 +24,22 @@ namespace HDQueue.Data.Entities
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
-        
-        public DateTime Fecha = DateTime.Now;
+
+        public DateTime Fecha { get; set; } = DateTime.Now;
 
         [Required(ErrorMessage = "Contacto es requerido")]
         public string Contacto { get; set; }
 
-        public string Estado { get; set; }
+        public Estado Estado { get; set; } = Estado.Pendiente;
 
-        public string Tecnico { get; set; }
+        public string TecnicoId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual  ApplicationUser User { get; set; }
+
+        [ForeignKey("TecnicoId")]
+        public virtual ApplicationUser TecnicoAsignado { get; set; }
+
+
     }
 }

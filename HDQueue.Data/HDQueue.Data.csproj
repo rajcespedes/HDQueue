@@ -56,14 +56,56 @@
   <ItemGroup>
     <Compile Include="Context\TicketHandlerContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Estado.cs" />
     <Compile Include="Entities\Ticket.cs" />
+    <Compile Include="ITecnicoService.cs" />
     <Compile Include="ITicketService.cs" />
     <Compile Include="ITicketServiceEF.cs" />
+    <Compile Include="Migrations\201911112326409_Initial.cs" />
+    <Compile Include="Migrations\201911112326409_Initial.Designer.cs">
+      <DependentUpon>201911112326409_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911120022545_AFechaInTicket.cs" />
+    <Compile Include="Migrations\201911120022545_AFechaInTicket.Designer.cs">
+      <DependentUpon>201911120022545_AFechaInTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911122350356_ModificacionFecha.cs" />
+    <Compile Include="Migrations\201911122350356_ModificacionFecha.Designer.cs">
+      <DependentUpon>201911122350356_ModificacionFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911140058277_ANoviembre13.cs" />
+    <Compile Include="Migrations\201911140058277_ANoviembre13.Designer.cs">
+      <DependentUpon>201911140058277_ANoviembre13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911140122165_UserType.cs" />
+    <Compile Include="Migrations\201911140122165_UserType.Designer.cs">
+      <DependentUpon>201911140122165_UserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TecnicoService.cs" />
+    <Compile Include="ViewModels\AsignacionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911112326409_Initial.resx">
+      <DependentUpon>201911112326409_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911120022545_AFechaInTicket.resx">
+      <DependentUpon>201911120022545_AFechaInTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911122350356_ModificacionFecha.resx">
+      <DependentUpon>201911122350356_ModificacionFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911140058277_ANoviembre13.resx">
+      <DependentUpon>201911140058277_ANoviembre13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911140122165_UserType.resx">
+      <DependentUpon>201911140122165_UserType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

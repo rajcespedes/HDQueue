@@ -1,6 +1,8 @@
 ﻿using HDQueue.Data.Entities;
+using HDQueue.Data.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +11,9 @@ namespace HDQueue.Data
 {
     public class ITicketServiceEF : ITicketService
     {
-        private readonly TicketHandlerContext context;
+        private readonly ApplicationDbContext context;
 
-        public ITicketServiceEF(TicketHandlerContext context)
+        public ITicketServiceEF(ApplicationDbContext context)
         {
             this.context = context;
         }
@@ -36,9 +38,9 @@ namespace HDQueue.Data
             return ticketEncontrado;
         }
 
-        public IEnumerable<Ticket> Listar()
+        public async Task<IEnumerable<Ticket>> Listar()
         {
-            return context.Tickets.ToList();
+            return await context.Tickets.ToListAsync();
         }
 
         public void Modificar(Ticket ticket)
@@ -46,15 +48,21 @@ namespace HDQueue.Data
             var ticketAModificar = context.Tickets.Single(t => t.Id == ticket.Id);
 
             ticketAModificar.Titulo = ticket.Titulo;
-            ticketAModificar.Usuario = ticket.Usuario;
             ticketAModificar.Detalle = ticket.Detalle;
             //ticketAModificar.Contacto = ticket.Contacto;
 
             context.SaveChanges();
         }
 
+        public async Task AsignarTicket(AsignacionViewModel asignacion)
+        {
+            var ticket = await context.Tickets.FindAsync(asignacion.TicketId);
 
+            if(ticket != null)
+            {
+                ticket.TecnicoId = asignacion.TecnicoId;
+                await context.SaveChangesAsync();
+            }
+        }
     }
-
-
 }
