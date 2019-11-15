@@ -13,6 +13,7 @@ namespace HDQueue.Data.Entities
     {
 
         public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Cierre> Cierres { get; set; }
         public TipoDeUsuario TipoDeUsuario { get; set; }
 
         public string Nombre { get; set; }

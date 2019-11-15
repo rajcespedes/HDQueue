@@ -25,6 +25,8 @@ namespace HDQueue.App_Start
 
                 builder.RegisterType<ITicketServiceEF>().As<ITicketService>().InstancePerRequest();
                 builder.RegisterType<ApplicationDbContext>().InstancePerRequest();
+                builder.RegisterType<TecnicoService>().As<ITecnicoService>().InstancePerRequest();
+
 
                 var container = builder.Build();
 

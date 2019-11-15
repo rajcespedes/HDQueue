@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace HDQueue.Data.ViewModels
 {
-    public class AsignacionViewModel
+    public class Transferir : AsignacionViewModel
     {
-        public string TecnicoId { get; set; }
-        public int TicketId { get; set; }
+        public string Comentario { get; set; }
     }
 }

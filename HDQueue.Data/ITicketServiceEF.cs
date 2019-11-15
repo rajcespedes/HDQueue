@@ -57,12 +57,24 @@ namespace HDQueue.Data
         public async Task AsignarTicket(AsignacionViewModel asignacion)
         {
             var ticket = await context.Tickets.FindAsync(asignacion.TicketId);
+            
 
             if(ticket != null)
             {
                 ticket.TecnicoId = asignacion.TecnicoId;
+                ticket.Estado = Estado.Asignado;
                 await context.SaveChangesAsync();
             }
+        }
+
+        public async Task Transferir(Transferir transferir)
+        {
+            var ticketEncontrado = await context.Tickets.FindAsync(transferir.TicketId);
+            ticketEncontrado.Comentario = transferir.Comentario;
+            ticketEncontrado.TecnicoId = transferir.TecnicoId;
+
+           await context.SaveChangesAsync();
+
         }
     }
 }

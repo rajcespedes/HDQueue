@@ -40,6 +40,9 @@ namespace HDQueue.Data.Entities
         [ForeignKey("TecnicoId")]
         public virtual ApplicationUser TecnicoAsignado { get; set; }
 
+        public string Comentario { get; set; }
+
+        public virtual Cierre Cierre { get; set; }
 
     }
 }

@@ -9,7 +9,7 @@ namespace HDQueue.Data.Entities
     public enum Estado
     {
         Pendiente = 1,
-        EnProceso,
+        Asignado,
         Completado
     }
 }

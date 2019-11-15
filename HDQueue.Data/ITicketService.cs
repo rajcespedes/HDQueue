@@ -17,5 +17,6 @@ namespace HDQueue.Data
         Ticket GetTicket(int id);
 
         Task AsignarTicket(AsignacionViewModel asignacion);
+        Task Transferir(Transferir transferir);
     }
 }

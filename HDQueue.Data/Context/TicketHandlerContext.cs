@@ -19,9 +19,22 @@ namespace HDQueue.Data
 
         public DbSet<Ticket> Tickets { get; set; }
 
+        public DbSet<Cierre> Cierres { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOptional(t => t.Cierre)
+                .WithRequired(c => c.Ticket);
         }
 
     }
