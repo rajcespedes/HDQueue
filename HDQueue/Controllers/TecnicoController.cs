@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace HDQueue.Controllers
 {
+    [Authorize]
     public class TecnicoController : Controller
     {
         private readonly ITicketService _ticketService;
@@ -133,6 +134,34 @@ namespace HDQueue.Controllers
             
 
             return View(ticket);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Cerrar([Bind(Include = "TicketId,ComentarioCierre")] Cierre cierre) 
+        {
+
+            ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+            cierre.TecnicoId = user.Id;
+            ModelState.Clear();
+
+            if (TryValidateModel(cierre))
+            {
+                await _ticketService.Cierre(cierre);
+                return RedirectToAction("Asignados", "Tecnico");
+            }
+
+            return View(cierre);
+
+        }
+
+        public async Task<ActionResult> Details(int id, string returnUrl)
+        {
+
+            var visualizarTicket = await _ticketService.GetTicketAsync(id);
+
+            ViewBag.ReturnUrl = returnUrl;
+
+            return View(visualizarTicket);
         }
 
     }

@@ -4,12 +4,12 @@
     ViewBag.Title = "No Asignados";
 }
 
-<h2>NoAsignados</h2>
+<h2>No Asignados</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User.Nombre)
+            @Html.Label("Cliente")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Titulo)
@@ -23,16 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Contacto)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TecnicoAsignado.Nombre)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem => item.User.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Titulo)
@@ -45,9 +41,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Contacto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TecnicoAsignado.Nombre)
         </td>
         <td>
             @Html.ActionLink("Asignar", "Asignar", new { id=item.Id }) |

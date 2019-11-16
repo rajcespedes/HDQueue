@@ -14,9 +14,10 @@ namespace HDQueue.Data
         void CrearTicket(Ticket ticket);
         Ticket GetById(int id);
         void Modificar(Ticket ticket);
-        Ticket GetTicket(int id);
+        Task<Ticket> GetTicketAsync(int id);
 
         Task AsignarTicket(AsignacionViewModel asignacion);
         Task Transferir(Transferir transferir);
+        Task Cierre(Cierre cierre);
     }
 }

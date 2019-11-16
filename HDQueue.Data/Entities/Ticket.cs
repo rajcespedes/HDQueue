@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,9 +24,9 @@ namespace HDQueue.Data.Entities
         public string Detalle { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 
-        public DateTime Fecha { get; set; } = DateTime.Now;
+        public DateTime Fecha { get; set; }
 
         [Required(ErrorMessage = "Contacto es requerido")]
         public string Contacto { get; set; }
@@ -38,6 +39,7 @@ namespace HDQueue.Data.Entities
         public virtual  ApplicationUser User { get; set; }
 
         [ForeignKey("TecnicoId")]
+        [DisplayName("Tecnico")]
         public virtual ApplicationUser TecnicoAsignado { get; set; }
 
         public string Comentario { get; set; }

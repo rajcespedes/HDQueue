@@ -54,7 +54,10 @@ namespace HelpDeskTicketHandler.Controllers
             ticket.Fecha = DateTime.Today;
             ticket.UserId = userId;
             ticket.Estado = Estado.Pendiente;
+            
             ticketService.CrearTicket(ticket);
+            
+            
 
             return RedirectToAction("Details", new { Id = ticket.Id });
         }
@@ -79,10 +82,10 @@ namespace HelpDeskTicketHandler.Controllers
         //    return RedirectToAction("Details", new { id = ticket.Id });
         //}
 
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
 
-            var visualizarTicket = ticketService.GetTicket(id);
+            var visualizarTicket = await ticketService.GetTicketAsync(id);
 
             return View(visualizarTicket);
         }

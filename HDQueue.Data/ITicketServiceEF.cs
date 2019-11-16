@@ -29,13 +29,9 @@ namespace HDQueue.Data
             return context.Tickets.SingleOrDefault(t => t.Id == id);
         }
 
-        public Ticket GetTicket(int id)
+        public async Task<Ticket> GetTicketAsync(int id)
         {
-            var lista = Listar();
-
-            var ticketEncontrado = context.Tickets.SingleOrDefault(t => t.Id == id);
-
-            return ticketEncontrado;
+            return await context.Tickets.FindAsync(id);
         }
 
         public async Task<IEnumerable<Ticket>> Listar()
@@ -75,6 +71,19 @@ namespace HDQueue.Data
 
            await context.SaveChangesAsync();
 
+        }
+
+        public async Task Cierre(Cierre cierre)
+        {
+            var ticketCerrado = await GetTicketAsync(cierre.TicketID);
+
+            if(ticketCerrado != null)
+            {
+                context.Cierres.Add(cierre);
+                ticketCerrado.Estado = Estado.Completado;
+                await context.SaveChangesAsync();
+            }
+           
         }
     }
 }

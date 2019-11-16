@@ -42,8 +42,24 @@
             @Html.DisplayFor(model => model.Contacto)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.TecnicoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecnicoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@ViewBag.ReturnUrl"> Back to List</a>
 </p>

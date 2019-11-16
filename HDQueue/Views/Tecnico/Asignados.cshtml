@@ -4,12 +4,13 @@
     ViewBag.Title = "Asignado";
 }
 
-<h2>NoAsignados</h2>
+<h2>Asignados</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User.Nombre)
+            
+            @Html.Label("Cliente")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Titulo)
@@ -24,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Contacto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TecnicoAsignado.Nombre)
+            @Html.Label("Tecnico")
         </th>
         <th></th>
     </tr>
@@ -33,7 +34,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.User.Nombre)                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)
@@ -53,7 +54,7 @@
             <td>
                 @Html.ActionLink("Transferir", "Transferir", new { id = item.Id }) |
                 @Html.ActionLink("Cerrar", "Cerrar", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id, returnUrl = "/Tecnico/Asignados" })
             </td>
         </tr>
     }

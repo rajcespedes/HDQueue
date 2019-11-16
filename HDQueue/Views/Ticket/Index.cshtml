@@ -18,7 +18,8 @@
             @Html.DisplayNameFor(model => model.Detalle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.Nombre)
+
+            @Html.Label("Cliente")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
@@ -29,7 +30,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Contacto)
         </th>
-        <th></th>
+        <th>
+            @Html.Label("Opciones")
+        </th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -42,13 +46,13 @@
         @Html.DisplayFor(modelItem => item.Detalle)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.User.UserName)
+        @Html.DisplayFor(modelItem => item.User.Nombre)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Fecha)
     </td>
     <th>
-        @Html.DisplayNameFor(model => model.Estado)
+        @Html.DisplayFor(modelItem => item.Estado)
     </th>
     <td>
         @Html.DisplayFor(modelItem => item.Contacto)
