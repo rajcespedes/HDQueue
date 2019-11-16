@@ -127,17 +127,20 @@ namespace HDQueue.Controllers
 
             if ((ticket == null || ticket.Estado != Estado.Asignado) && user.Id != ticket.TecnicoId)
             {
-
                 return HttpNotFound();
+            }
 
-            }           
-            
+            CierreViewModel cierre = new CierreViewModel
+            {
+                TicketID = ticket.Id,
+                Titulo = ticket.Titulo
+            };
 
-            return View(ticket);
+            return View(cierre);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Cerrar([Bind(Include = "TicketId,ComentarioCierre")] Cierre cierre) 
+        public async Task<ActionResult> Cerrar([Bind(Include = "TicketId,Comentario")] CierreViewModel cierre) 
         {
 
             ApplicationUser user = await UserManager.FindByNameAsync(User.Identity.Name);

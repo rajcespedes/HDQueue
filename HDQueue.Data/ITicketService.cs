@@ -18,6 +18,6 @@ namespace HDQueue.Data
 
         Task AsignarTicket(AsignacionViewModel asignacion);
         Task Transferir(Transferir transferir);
-        Task Cierre(Cierre cierre);
+        Task Cierre(CierreViewModel cierre);
     }
 }

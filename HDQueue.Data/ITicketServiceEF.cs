@@ -73,12 +73,20 @@ namespace HDQueue.Data
 
         }
 
-        public async Task Cierre(Cierre cierre)
+        public async Task Cierre(CierreViewModel cierreViewModel)
         {
-            var ticketCerrado = await GetTicketAsync(cierre.TicketID);
+            var ticketCerrado = await GetTicketAsync(cierreViewModel.TicketID);
 
             if(ticketCerrado != null)
             {
+
+                Cierre cierre = new Cierre
+                {
+                    ComentarioCierre = cierreViewModel.Comentario,
+                    TecnicoId = cierreViewModel.TecnicoId,
+                    TicketID = ticketCerrado.Id
+                };
+
                 context.Cierres.Add(cierre);
                 ticketCerrado.Estado = Estado.Completado;
                 await context.SaveChangesAsync();

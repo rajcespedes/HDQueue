@@ -54,12 +54,16 @@ namespace HelpDeskTicketHandler.Controllers
             ticket.Fecha = DateTime.Today;
             ticket.UserId = userId;
             ticket.Estado = Estado.Pendiente;
-            
-            ticketService.CrearTicket(ticket);
-            
-            
 
-            return RedirectToAction("Details", new { Id = ticket.Id });
+            ModelState.Clear();
+
+            if (TryValidateModel(ticket))
+            {
+                ticketService.CrearTicket(ticket);
+                return RedirectToAction("Details", new { Id = ticket.Id });
+            }
+
+            return View(ticket);
         }
 
         //[HttpGet]
