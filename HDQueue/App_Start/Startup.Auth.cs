@@ -9,7 +9,7 @@ using HDQueue.Models;
 using HDQueue.Data.Entities;
 using HDQueue.Data;
 
-namespace HDQueue
+namespace HDQueue 
 {
     public partial class Startup
     {
